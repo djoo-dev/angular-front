@@ -1,0 +1,91 @@
+<div class="toolbar">
+  <mat-form-field>
+    <mat-label>Filtrer</mat-label>
+    <input matInput (input)="applyFilter($event)" placeholder="Filtrer les catégories">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="showAddCategoryForm = true">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<!-- Formulaire d'ajout -->
+<div *ngIf="showAddCategoryForm" class="dialog">
+  <h1>Ajout de la catégorie</h1>
+  <form (ngSubmit)="addCategory()" #categoryForm="ngForm">
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <input matInput [(ngModel)]="newCategory.nom" name="nom" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="newCategory.description" name="description" required>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Ajouter</button>
+    <button mat-button type="button" (click)="showAddCategoryForm = false">Annuler</button>
+  </form>
+</div>
+
+<!-- Formulaire de modification -->
+<div *ngIf="showEditCategoryForm && currentCategory" class="dialog">
+  <h1>Modifications de la catégorie</h1>
+  <form (ngSubmit)="saveCategory()">
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <input matInput [(ngModel)]="currentCategory.nom" name="nom" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="currentCategory.description" name="description" required>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Sauvegarder</button>
+    <button mat-button type="button" (click)="showEditCategoryForm = false">Annuler</button>
+  </form>
+</div>
+
+<!-- Détails de la catégorie -->
+<div *ngIf="showViewCategoryDetails && currentCategory" class="dialog">
+  <h1>Détails de la catégorie</h1>
+  <p><strong>ID:</strong> {{currentCategory.id}}</p>
+  <p><strong>Nom:</strong> {{currentCategory.nom}}</p>
+  <p><strong>Description:</strong> {{currentCategory.description}}</p>
+  <button mat-button (click)="closeDetails()">Fermer</button>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let category"> {{category.id}} </td>
+  </ng-container>
+
+  <!-- Nom Column -->
+  <ng-container matColumnDef="nom">
+    <th mat-header-cell *matHeaderCellDef> Nom </th>
+    <td mat-cell *matCellDef="let category"> {{category.nom}} </td>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let category"> {{category.description}} </td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="operation">
+    <th mat-header-cell *matHeaderCellDef> Opération </th>
+    <td mat-cell *matCellDef="let category">
+      <button mat-button (click)="viewCategory(category)"><mat-icon>visibility</mat-icon></button>
+      <button mat-button (click)="editCategory(category)"><mat-icon>edit</mat-icon></button>
+      <button mat-button color="warn" (click)="removeCategory(category.id)"><mat-icon>delete</mat-icon></button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [length]="dataSource.data.length" [pageSize]="5"></mat-paginator>

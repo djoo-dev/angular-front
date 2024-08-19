@@ -1,0 +1,22 @@
+#chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+  
+    apx-chart {
+      width: 100%;
+      max-width: 600px;
+    }
+  
+    .apexcharts-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1a237e;
+    }
+  }
+  

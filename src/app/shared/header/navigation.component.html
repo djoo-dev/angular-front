@@ -1,0 +1,17 @@
+<ul class="navbar-nav float-end">
+  <li class="nav-item" ngbDropdown placement="bottom-end">
+    <a ngbDropdownToggle class="nav-link waves-effect waves-dark pro-pic" href="javascript:void(0)">
+      <img src="assets/images/users/user4.jpg" alt="user" class="rounded-circle" width="31" />
+      <span class="ms-2">John Deo</span>
+    </a>
+    <div class="dropdown-menu-right" ngbDropdownMenu>
+      <a class="dropdown-item" href="javascript:void(0)">Mon Profil</a>
+      <a class="dropdown-item" href="javascript:void(0)">Mon Solde</a>
+      <a class="dropdown-item" href="javascript:void(0)">Boîte de Réception</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="javascript:void(0)">Paramètres du Compte</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" (click)="logout()">Déconnecter</a>
+    </div>
+  </li>
+</ul>

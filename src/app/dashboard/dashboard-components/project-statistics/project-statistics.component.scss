@@ -1,0 +1,37 @@
+// project-statistics.component.scss
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin: 20px auto;
+  border-radius: 15px; // Rounded corners
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); // Subtle shadow
+  background: #ffffff; // White background for clarity
+  border: 1px solid #e0e0e0; // Light border for definition
+  
+  .chart-title {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    text-align: center;
+    color: #333; // Dark text color
+    font-weight: bold;
+  }
+  
+  .apx-chart {
+    animation: fadeIn 1s ease-in-out;
+    border-radius: 15px; // Rounded corners for the chart
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

@@ -1,0 +1,69 @@
+/* Style du dialogue */
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px; /* Ajustez la largeur selon vos besoins */
+  background: #ffffff; /* Couleur de fond blanche pour le dialogue */
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Assurez-vous que le dialogue est au-dessus des autres éléments */
+  max-height: 90vh; /* Limitez la hauteur pour les grands écrans */
+  overflow-y: auto; /* Ajoutez un défilement si le contenu dépasse la hauteur */
+  backdrop-filter: blur(8px); /* Effet de flou sur l'arrière-plan du dialogue */
+  background-color: rgba(255, 255, 255, 0.8); /* Couleur de fond blanche avec opacité pour mieux voir le flou */
+}
+
+/* Style de la barre d'outils */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+}
+
+/* Formulaire dans le dialogue */
+form {
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 16px;
+
+  mat-form-field {
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
+  button {
+    margin-right: 8px;
+    &:first-child {
+      margin-left: 0; /* Supprimer la marge à gauche du premier bouton */
+    }
+  }
+}
+
+/* Détails du dialogue */
+.mat-dialog-content {
+  padding: 16px;
+  background-color: #ffffff;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+  border-top: 1px solid #90caf9; /* Couleur bleue légère pour la bordure supérieure */
+}
+
+/* Styles globaux pour le tableau */
+.mat-table {
+  margin-top: 16px;
+}
+
+/* Style du bouton pour le formulaire */
+button.mat-raised-button {
+  margin-top: 16px;
+}

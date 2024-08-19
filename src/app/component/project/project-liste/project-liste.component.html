@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>{{ isViewMode ? 'Voir Projet' : (isEditMode ? 'Modifier Projet' : 'Ajouter Projet') }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="name" [attr.disabled]="isViewMode ? true : null">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" [attr.disabled]="isViewMode ? true : null">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Date Début</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateDebut" [attr.disabled]="isViewMode ? true : null">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Date Fin</mat-label>
+      <input matInput [matDatepicker]="picker2" formControlName="dateFin" [attr.disabled]="isViewMode ? true : null">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Frais</mat-label>
+      <input matInput formControlName="frais" [attr.disabled]="isViewMode ? true : null">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Catégorie</mat-label>
+      <mat-select formControlName="categorieId" [attr.disabled]="isViewMode ? true : null">
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <!-- Seul bouton visible en mode 'view' -->
+  <ng-container *ngIf="isEditMode || isAddMode">
+    <button mat-button (click)="onSubmit()">Enregistrer</button>
+  </ng-container>
+</div>
